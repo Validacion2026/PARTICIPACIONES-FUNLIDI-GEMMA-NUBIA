@@ -3,122 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Proyecto - Conexión Apps Script</title>
+  <title>REGISTROS FUNLIDI</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 500px;
-      margin: 40px auto;
-      padding: 20px;
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
     }
-    .form-group {
-      margin-bottom: 15px;
-    }
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-    input {
+    iframe {
       width: 100%;
-      padding: 8px;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    button {
-      background-color: #007bff;
-      color: white;
-      padding: 10px 15px;
+      height: 100vh;
       border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      width: 100%;
     }
-    button:hover {
-      background-color: #0056b3;
-    }
-    #mensaje {
-      margin-top: 15px;
-      padding: 10px;
-      border-radius: 4px;
-      display: none;
-    }
-    .exito { background-color: #d4edda; color: #155724; }
-    .error { background-color: #f8d7da; color: #721c24; }
   </style>
 </head>
 <body>
 
-  <h2>Formulario de Registro / Envío</h2>
+  <iframe src="https://script.google.com/macros/s/AKfycbwr3idEJezT9zWoW4grNVFngXuDjXcAUonhOgfeNBXhsaWk7-1qTmiOfLu-Co462ts8Lg/exec"></iframe>
 
-  <form id="formularioGoogle">
-    <div class="form-group">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
-    </div>
-
-    <div class="form-group">
-      <label for="email">Correo electrónico:</label>
-      <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
-    </div>
-
-    <button type="submit" id="btnEnviar">Enviar Datos</button>
-  </form>
-
-  <div id="mensaje"></div>
-
-  <script>
-    // Tu nueva URL de Google Apps Script
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwr3idEJezT9zWoW4grNVFngXuDjXcAUonhOgfeNBXhsaWk7-1qTmiOfLu-Co462ts8Lg/exec";
-
-    const formulario = document.getElementById("formularioGoogle");
-    const mensajeDiv = document.getElementById("mensaje");
-    const btnEnviar = document.getElementById("btnEnviar");
-
-    formulario.addEventListener("submit", async function(e) {
-      e.preventDefault();
-
-      // Indicador de estado
-      btnEnviar.disabled = true;
-      btnEnviar.innerText = "Enviando...";
-      mensajeDiv.style.display = "none";
-
-      // Recopilar datos
-      const datos = {
-        nombre: document.getElementById("nombre").value,
-        email: document.getElementById("email").value
-      };
-
-      try {
-        // Petición POST a Google Apps Script
-        await fetch(SCRIPT_URL, {
-          method: "POST",
-          mode: "no-cors", // Requerido por restricciones de redirección CORS de Apps Script
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(datos)
-        });
-
-        // Mostrar éxito
-        mostrarMensaje("¡Formulario enviado correctamente!", "exito");
-        formulario.reset();
-
-      } catch (error) {
-        console.error("Error:", error);
-        mostrarMensaje("Ocurrió un error al enviar los datos.", "error");
-      } finally {
-        btnEnviar.disabled = false;
-        btnEnviar.innerText = "Enviar Datos";
-      }
-    });
-
-    function mostrarMensaje(texto, tipo) {
-      mensajeDiv.innerText = texto;
-      mensajeDiv.className = tipo;
-      mensajeDiv.style.display = "block";
-    }
-  </script>
 </body>
 </html>
